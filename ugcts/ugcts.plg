@@ -1,0 +1,208 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ksugbu - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+
+
+
+<h3>Results</h3>
+ugate.exe - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: ksugbu - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+
+
+
+<h3>Results</h3>
+ugate.exe - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: ugbase - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+
+
+
+<h3>Results</h3>
+ugbase_r.lib - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: ugbase - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+
+
+
+<h3>Results</h3>
+ugbase_d.lib - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: ugcts - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\CHENYH\LOCALS~1\Temp\RSP2B7.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /I "./" /I "../xinc" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/ugcts.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\dd\projects\FIXIII\UGate\ksugbu\ksugbu.cpp"
+"C:\dd\projects\FIXIII\UGate\ugcts\CJThread.cpp"
+"C:\dd\projects\FIXIII\UGate\ugcts\DRTPData.cpp"
+"C:\dd\projects\FIXIII\UGate\ugcts\InThread.cpp"
+"C:\dd\projects\FIXIII\UGate\ugcts\KSCTS.cpp"
+"C:\dd\projects\FIXIII\UGate\ugcts\OutThread.cpp"
+"C:\dd\projects\FIXIII\UGate\ugcts\ugcts2di.cxx"
+"C:\dd\projects\FIXIII\UGate\ugcts\ugdb2di.cxx"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CHENYH\LOCALS~1\Temp\RSP2B7.tmp" 
+Creating temporary file "C:\DOCUME~1\CHENYH\LOCALS~1\Temp\RSP2B8.tmp" with contents
+[
+ugbase_r.lib bccsvr.lib bccclt.lib XPack.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/ugcts.pdb" /machine:I386 /out:"Release/ugcts.exe" /libpath:"..\lib" 
+.\Release\ksugbu.obj
+.\Release\CJThread.obj
+.\Release\DRTPData.obj
+.\Release\InThread.obj
+.\Release\KSCTS.obj
+.\Release\OutThread.obj
+.\Release\ugcts2di.obj
+.\Release\ugdb2di.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\CHENYH\LOCALS~1\Temp\RSP2B8.tmp"
+<h3>Output Window</h3>
+Compiling...
+ksugbu.cpp
+CJThread.cpp
+DRTPData.cpp
+InThread.cpp
+KSCTS.cpp
+OutThread.cpp
+ugcts2di.cxx
+C:\dd\projects\FIXIII\UGate\ugcts\ugcts2di.cxx(14) : error C2146: syntax error : missing ';' before identifier 'SQL'
+C:\dd\projects\FIXIII\UGate\ugcts\ugcts2di.cxx(14) : error C2501: 'EXEC' : missing storage-class or type specifiers
+C:\dd\projects\FIXIII\UGate\ugcts\ugcts2di.cxx(14) : fatal error C1004: unexpected end of file found
+ugdb2di.cxx
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\sqltypes.h(114) : error C2146: syntax error : missing ';' before identifier 'SQLHWND'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\sqltypes.h(114) : fatal error C1004: unexpected end of file found
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+ugcts.exe - 5 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: ugcts - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\CHENYH\LOCALS~1\Temp\RSP2B9.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /I "./" /I "../xinc" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/ugcts.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\dd\projects\FIXIII\UGate\ugcts\CJThread.cpp"
+"C:\dd\projects\FIXIII\UGate\ugcts\DRTPData.cpp"
+"C:\dd\projects\FIXIII\UGate\ugcts\KSCTS.cpp"
+"C:\dd\projects\FIXIII\UGate\ugcts\OutThread.cpp"
+"C:\dd\projects\FIXIII\UGate\ugcts\ugcts2di.cxx"
+"C:\dd\projects\FIXIII\UGate\ugcts\ugdb2di.cxx"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CHENYH\LOCALS~1\Temp\RSP2B9.tmp" 
+Creating temporary file "C:\DOCUME~1\CHENYH\LOCALS~1\Temp\RSP2BA.tmp" with contents
+[
+ugbase_d.lib bccsvr.lib bccclt.lib XPack.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/ugcts.pdb" /debug /machine:I386 /out:"Debug/ugcts.exe" /pdbtype:sept /libpath:"..\lib" 
+.\Debug\ksugbu.obj
+.\Debug\CJThread.obj
+.\Debug\DRTPData.obj
+.\Debug\InThread.obj
+.\Debug\KSCTS.obj
+.\Debug\OutThread.obj
+.\Debug\ugcts2di.obj
+.\Debug\ugdb2di.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\CHENYH\LOCALS~1\Temp\RSP2BA.tmp"
+<h3>Output Window</h3>
+Compiling...
+CJThread.cpp
+DRTPData.cpp
+KSCTS.cpp
+OutThread.cpp
+ugcts2di.cxx
+c:\dd\projects\fixiii\ugate\ugcts\ugcts2di.cxx(14) : error C2146: syntax error : missing ';' before identifier 'SQL'
+c:\dd\projects\fixiii\ugate\ugcts\ugcts2di.cxx(14) : error C2501: 'EXEC' : missing storage-class or type specifiers
+c:\dd\projects\fixiii\ugate\ugcts\ugcts2di.cxx(14) : fatal error C1004: unexpected end of file found
+ugdb2di.cxx
+c:\program files\microsoft visual studio\vc98\include\sqltypes.h(114) : error C2146: syntax error : missing ';' before identifier 'SQLHWND'
+c:\program files\microsoft visual studio\vc98\include\sqltypes.h(114) : fatal error C1004: unexpected end of file found
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+ugcts.exe - 5 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: ugfix - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+
+
+
+<h3>Results</h3>
+ugfix.exe - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: ugfix - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+
+
+
+<h3>Results</h3>
+ugfix.exe - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: ugfts - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\CHENYH\LOCALS~1\Temp\RSP2BB.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /I "./" /I "../xinc" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/ugfts.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\dd\projects\FIXIII\UGate\ksugbu\ksugbu.cpp"
+"C:\dd\projects\FIXIII\UGate\ugfts\CJThread.cpp"
+"C:\dd\projects\FIXIII\UGate\ugfts\DRTPData.cpp"
+"C:\dd\projects\FIXIII\UGate\ugfts\InThread.cpp"
+"C:\dd\projects\FIXIII\UGate\ugfts\KSFTS.cpp"
+"C:\dd\projects\FIXIII\UGate\ugfts\OutThread.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CHENYH\LOCALS~1\Temp\RSP2BB.tmp" 
+Creating temporary file "C:\DOCUME~1\CHENYH\LOCALS~1\Temp\RSP2BC.tmp" with contents
+[
+ugbase_r.lib bccsvr.lib bccclt.lib XPack.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/ugfts.pdb" /machine:I386 /out:"Release/ugfts.exe" /libpath:"..\lib" 
+.\Release\ksugbu.obj
+.\Release\CJThread.obj
+.\Release\DRTPData.obj
+.\Release\InThread.obj
+.\Release\KSFTS.obj
+.\Release\OutThread.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\CHENYH\LOCALS~1\Temp\RSP2BC.tmp"
+<h3>Output Window</h3>
+Compiling...
+ksugbu.cpp
+CJThread.cpp
+DRTPData.cpp
+InThread.cpp
+KSFTS.cpp
+OutThread.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+ugfts.exe - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: ugfts - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+
+
+
+<h3>Results</h3>
+ugfts.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

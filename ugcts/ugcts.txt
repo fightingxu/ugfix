@@ -1,0 +1,25 @@
+2011-9-26 19:47:59
+	UGCTS要求：为了能够将FIX平台的委托和其他进行区分，独立一个WTYYB（委托营业部），由于撤单接口中，不提供
+	指定的委托方式（写死为'4'），因此，尽管FIX委托采用WTFSx和WTFSi的配置，但不能用它来区分。
+
+2011-9-17 11:50:44
+	OutThread中目前只是处理来自平台的FIX业务消息:
+		1. MsgType='D': New Order Single Request
+			a. 用imarket.txt作为"SecurityExchange" <-> "内部市场代码"的对照表
+			b. 兼容申万的一些要求；内部装载一个 hwgsdm.txt 文件，作为 <OnBehalfCompID> <-> HWGSDM
+			c. 在要求KSCTS的PARTNERID参数设置的clordidfmt中，直接作为KSCTS的指定委托合同号处理
+					要采用 "nnn%07d"来生成给KSCTS的ClOrdID
+		2. MsgType='F': Order Cancel Request
+		3. MsgType='8': Execution Report
+		4. MsgType='9': Cancel Rejected
+
+2011-9-17 11:38:42
+	将有如下内部处理线程：
+		1. OutThread X N - 即多线程: 专门处理来自平台的消息;
+		2. CJThread X 1 - 一个线程: 专门处理KSCTS作为SellSide，属于平台的成交回报和撤单回报（也包括被交易所拒绝的回报）
+		3. InThread X N - 多线程: 处理来自于KSCTS的向平台提交的其他市场的请求
+	功能资源包括:
+		1. g_KSCTS: 一个公用的管理整个UDL的资源和状态； 
+		2. KSSQL: 一个公用的数据库连接资源，仅仅由g_KSCTS直接调用，其他则通过g_KSCTS调用，以保证同时只有一个线程在使用；
+		3. DRTPData: 一个集中管理DRTP，并通过它收发数据的资源，其他处理线程可以直接调用；
+

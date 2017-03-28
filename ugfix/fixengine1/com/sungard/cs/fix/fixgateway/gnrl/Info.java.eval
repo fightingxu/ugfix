@@ -1,0 +1,47 @@
+package com.sungard.cs.fix.fixgateway.gnrl;
+
+public final class Info
+{
+    public static int    dt = 20021231; // Expiration date
+    public static int    up = 12*60;    // Max up time [minutes]
+    public static int    fx = 20;       // Maximum number of FIX Sessions
+    public static int    rn = 76576;    // Random number
+    public static String ky = "7851807974299440420977406435772822736951";
+    
+    public static String usage =
+        "Usage: FIXEngine <config-file>";
+    
+    public static String[] contact =
+    {
+        "For further information, please contact Sungard Business Integration:",
+        "United States  : +1-212-977-7366",
+        "United Kingdom : +44 20 7335 2920",
+        "Switzerland    : +41 1 305 8575",
+        "Germany        : +49 69 256 14305",
+        "Israel         : +972 9 960 4888",
+        "Singapore      : +65 6338 8336",
+        "WEB            : http://www.integration.sungard.com"
+    };
+
+    public static String[] credits = 
+    {
+        "===========================",
+        "FIX Engine development team",
+        "===========================",
+        "Zak Pinhas",
+        "Adi Shem-Tov",
+        "Alex Gurman",
+        "Alon Dabby",
+        "Amir Moshenson",
+        "Avi Yafe",
+        "Azgad Nov",
+        "Dan Hoffman",
+        "Daniel Barkan",
+        "Daniel Sivan",
+        "Halo Ben-Asher", 
+        "Max Ratchkauskas",
+        "Roi Rozenthal",
+        "Sara Wasilski",
+        "Srinivas Chamarthi"
+    };
+ }

@@ -1,0 +1,112 @@
+2013/4/27 15:06:41 还是发现在半夜03:30做EOD的时候，若GL处于被Close状态下，做让FE做EOD，会导致其异常，
+   为此在 CFIXSession中加入m_bToEOD，记录在Close状态下，要求执行EOD，因此在OpenSession的时候，检查执行！
+   同时发现 GL - CLOSE下，在FE内部自动做EOD的时候，不能对GL做任何操作，如读取Status
+    --- 为此，特别在OTRun中也加入m_LastStatus状态检查，只有在Open状态（即Connected下）才做具体的工作和查询等
+   KEY: 2013/4/27
+   状态: 在26下午启动UGFIX后，对ML，GL的Session做过一些操作，尤其对GL做了Open，Close操作后，
+         ?未知其是否处于Close? 检查26日   fbulog日志:
+366735200 14:58:21 17988 Level666 -- MsgIn:411731-CYHUG1|GL:0:0:(0)RC1- Received Logout message in sync.:452:374    ==》 测试的对方关闭的
+366735418 14:58:21 17988 Level666 -- MsgIn:411731-CYHUG1|GL:1:0:(0)RC1- PTP communication closed after successful logout.:452:374
+366737212 14:58:23 17988 Level666 -- MsgIn:411731-CYHUG1|ML:2:0:(0)RC1- PostLogin timeout:700:696
+										          |THOMSON:-1:0:(1366959503)Not started!:0:0
+										          |GL:1:0:(1)RC1- PTP communication closed after successful logout.:454:376
+										          |BLP:-1:0:(1366959503)Not started!:0:0
+										          |BNP:-1:0:(1366959503)Not started!:0:0
+										          |BCL:-1:0:(1366959503)Not started!:0:0
+										          |SWHK:-1:0:(1366959503)Not started!:0:0
+										          |CLSA:-1:0:(1366959503)Not started!:0:0
+
+397431220 23:29:58 17988 Level666 -- MsgIn:411731-CYHUG1|ML:2:0:(1)RC1- PostLogin timeout:1722:1716
+										          |THOMSON:-1:0:(1366990198)Not started!:0:0
+										          |GL:1:0:(0)RC1- PTP communication closed after successful logout.:454:376
+										          |BLP:-1:0:(1366990198)Not started!:0:0
+										          |BNP:-1:0:(1366990198)Not started!:0:0
+										          |BCL:-1:0:(1366990198)Not started!:0:0
+										          |SWHK:-1:0:(1366990198)Not started!:0:0
+										          |CLSA:-1:0:(1366990198)Not started!:0:0
+397432951 23:30:00 17988 Level666 -- MsgIn:411731-CYHUG1|ML:0:0:(2)RC1- Received Logout message in sync.:1722:1716  ==》在线情况下，ML对手方设置的 23:30的时候自动Close
+397433170 23:30:00 17988 Level666 -- MsgIn:411731-CYHUG1|ML:1:0:(2)RC1- PTP communication closed after successful logout.:1722:1716   
+397436227 23:30:03 17988 Level666 -- MsgIn:411731-CYHUG1|ML:1:0:(2)RC1- PTP communication closed after successful logout.:1724:1718
+										          |THOMSON:-1:0:(1366990203)Not started!:0:0
+										          |GL:1:0:(1)RC1- PTP communication closed after successful logout.:454:376
+										          |BLP:-1:0:(1366990203)Not started!:0:0
+										          |BNP:-1:0:(1366990203)Not started!:0:0
+										          |BCL:-1:0:(1366990203)Not started!:0:0
+										          |SWHK:-1:0:(1366990203)Not started!:0:0
+										          |CLSA:-1:0:(1366990203)Not started!:0:0
+
+
+399169165 23:58:56 17988 Level666 -- MsgIn:411731-CYHUG1|ML:1:0:(0)RC1- PTP communication closed after successful logout.:1724:1718
+											  |THOMSON:-1:0:(1366991936)Not started!:0:0
+											  |GL:1:0:(1)RC1- PTP communication closed after successful logout.:454:376
+											  |BLP:-1:0:(1366991936)Not started!:0:0
+											  |BNP:-1:0:(1366991936)Not started!:0:0
+											  |BCL:-1:0:(1366991936)Not started!:0:0
+											  |SWHK:-1:0:(1366991936)Not started!:0:0
+											  |CLSA:-1:0:(1366991936)Not started!:0:0
+											  
+399173096 23:59:00 17988 Level666 -- MsgIn:411731-CYHUG1|ML:0:0:(1)RC0-close:1724:1718
+399173377 23:59:00 17988 Level666 -- MsgIn:411731-CYHUG1|GL:0:0:(2)RC0-close:454:376      ===》 这是FE中设置的Close时间点
+399174172 23:59:01 17988 Level666 -- MsgIn:411731-CYHUG1|ML:0:0:(0)RC0-close:1724:1718
+										          |THOMSON:-1:0:(1366991941)Not started!:0:0
+										          |GL:0:0:(1)RC0-close:454:376
+										          |BLP:-1:0:(1366991941)Not started!:0:0
+										          |BNP:-1:0:(1366991941)Not started!:0:0
+										          |BCL:-1:0:(1366991941)Not started!:0:0
+										          |SWHK:-1:0:(1366991941)Not started!:0:0
+										          |CLSA:-1:0:(1366991941)Not started!:0:0
+
+
+
+但27日的fbulog日志中：
+420829186 05:59:56 17988 Level666 -- MsgIn:411731-CYHUG1|ML:0:0:(0)RC0-close:1:1|THOMSON:-1:0:(1367013596)Not started!:0:0
+			|GL:0:0:(0)RC0-close:1:1
+			|BLP:-1:0:(1367013596)Not started!:0:0|BNP:-1:0:(1367013596)Not started!:0:0|BCL:-1:0:(1367013596)Not started!:0:0|SWHK:-1:0:(1367013596)Not started!:0:0|CLSA:-1:0:(1367013596)Not started!:0:0
+420834193 06:00:01 17988 Level666 -- MsgIn:411731-CYHUG1|ML:0:0:(0)RC0-close:1:1|THOMSON:-1:0:(1367013601)Not started!:0:0
+			|GL:0:0:(2)RC0-close:1:1   ==》 从此这个线程被阻塞了，而这个时候，正好是FE执行 EOD的工作: EOD_STANDARD_TIME[0]=6:00
+			|BLP:-1:0:(1367013601)Not started!:0:0|BNP:-1:0:(1367013601)Not started!:0:0|BCL:-1:0:(1367013601)Not started!:0:0|SWHK:-1:0:(1367013601)Not started!:0:0|CLSA:-1:0:(1367013601)Not started!:0:0
+420839201 06:00:06 17988 Level666 -- MsgIn:411731-CYHUG1|ML:0:0:(0)RC0-close:1:1|THOMSON:-1:0:(1367013606)Not started!:0:0
+			|GL:0:0:(7)RC0-close:1:1
+			|BLP:-1:0:(1367013606)Not started!:0:0|BNP:-1:0:(1367013606)Not started!:0:0|BCL:-1:0:(1367013606)Not started!:0:0|SWHK:-1:0:(1367013606)Not started!:0:0|CLSA:-1:0:(1367013606)Not started!:0:0
+420844209 06:00:11 17988 Level666 -- MsgIn:411731-CYHUG1|ML:0:0:(1)RC0-close:1:1|THOMSON:-1:0:(1367013611)Not started!:0:0
+			|GL:0:0:(12)RC0-close:1:1
+			|BLP:-1:0:(1367013611)Not started!:0:0|BNP:-1:0:(1367013611)Not started!:0:0|BCL:-1:0:(1367013611)Not started!:0:0|SWHK:-1:0:(1367013611)Not started!:0:0|CLSA:-1:0:(1367013611)Not started!:0:0
+
+
+
+429829585 08:29:57 17988 Level666 -- MsgIn:411731-CYHUG1|ML:1:0:(1)RC0- Open:1:1
+										          |THOMSON:-1:0:(1367022597)Not started!:0:0
+										          |GL:0:0:(8998)RC0-close:1:1
+										          |BLP:-1:0:(1367022597)Not started!:0:0
+										          |BNP:-1:0:(1367022597)Not started!:0:0
+										          |BCL:-1:0:(1367022597)Not started!:0:0
+										          |SWHK:-1:0:(1367022597)Not started!:0:0
+										          |CLSA:-1:0:(1367022597)Not started!:0:0
+429834531 08:30:02 17988 Level666 -- MsgIn:411731-CYHUG1|ML:2:0:(1)RC1- PostLogin timeout:1:1
+429834593 08:30:02 17988 Level666 -- MsgIn:411731-CYHUG1|ML:2:0:(1)RC1- PostLogin timeout:1:1
+										          |THOMSON:-1:0:(1367022602)Not started!:0:0
+										          |GL:0:0:(9003)RC0-close:1:1
+										          |BLP:-1:0:(1367022602)Not started!:0:0
+										          |BNP:-1:0:(1367022602)Not started!:0:0
+										          |BCL:-1:0:(1367022602)Not started!:0:0
+										          |SWHK:-1:0:(1367022602)Not started!:0:0
+										          |CLSA:-1:0:(1367022602)Not started!:0:0
+这里尽管ML已经连接正常了，可是到FE取状态（ReflushStatus，得不到数据???）
+
+直到退出之前：
+434433081 09:46:40 17988 Level666 -- MsgIn:411731-CYHUG1|ML:2:0:(0)RC1- PostLogin timeout:1:1   ====》 ？？ 到现在是ReflushStatus因Lock不能调用还是没有能够取到数据呢？
+										          |THOMSON:-1:0:(1367027200)Not started!:0:0
+										          |GL:0:0:(13601)RC0-close:1:1
+										          |BLP:-1:0:(1367027200)Not started!:0:0
+										          |BNP:-1:0:(1367027200)Not started!:0:0
+										          |BCL:-1:0:(1367027200)Not started!:0:0
+										          |SWHK:-1:0:(1367027200)Not started!:0:0
+										          |CLSA:-1:0:(1367027200)Not started!:0:0
+434433331 09:46:40 17988 Level666 -- MsgIn:411756-0|CYHUG1|ML
+434433440 09:46:41 17988 Level666 -- MsgIn:411731-CYHUG1|ML:1:0:(1)RC6- PTP Receive Timeout event:1:1==》 ？？ 是否我强制做了一下EOD，此前对方序号正常在跳动中
+434433549 09:46:41 17988 Level666 -- MsgIn:411756-0|CYHUG1|GL
+434433549 09:46:41 17988 Level666 -- MsgIn:411731-CYHUG1|ML:2:0:(1)RC7- sequence numbers are now in sync:1:1
+434440289 09:46:47 17988 Level666 -- MsgIn:411731-CYHUG1|ML:2:0:(0)RC7- sequence numbers are now in sync:1:1|THOMSON:-1:0:(1367027207)Not started!:0:0|GL:0:0:(13608)RC0-close:1:1|BLP:-1:0:(1367027207)Not started!:0:0|BNP:-1:0:(1367027207)Not started!:0:0|BCL:-1:0:(1367027207)Not started!:0:0|SWHK:-1:0:(1367027207)Not started!:0:0|CLSA:-1:0:(1367027207)Not started!:0:0
+434451427 09:46:58 17988 Level666 -- MsgIn:411731-CYHUG1|ML:2:0:(0)RC7- sequence numbers are now in sync:1:1|THOMSON:-1:0:(1367027218)Not started!:0:0|GL:0:0:(13619)RC0-close:1:1|BLP:-1:0:(1367027218)Not started!:0:0|BNP:-1:0:(1367027218)Not started!:0:0|BCL:-1:0:(1367027218)Not started!:0:0|SWHK:-1:0:(1367027218)Not started!:0:0|CLSA:-1:0:(1367027218)Not started!:0:0
+
+            

@@ -1,0 +1,12 @@
+277294132 13:57:40 7020 Level100 -- BULinkThread[1]退出!
+277294132 13:57:40 7020 Level46 -- GPT0(通讯平台组BranchNo=100)正常退出!
+277294163 13:57:40 7020 Level100 -- BULinkThread[0]退出!
+277294163 13:57:40 7020 Level101 -- ForwardThread[1] Exit!
+277294163 13:57:40 7020 Level100 -- KSMBCC-ForwardThread Exit!
+277294179 13:57:40 7020 Level100 -- BUListenThread退出!
+277294179 13:57:40 7020 Level801 -- (172.28.120.205:3000)应用接收错误(-3):DRTP error @ receiving:10038:Socket operation on nonsocket. 
+277294179 13:57:40 7020 Level801 -- (172.28.120.205:3010)应用接收错误(-3):DRTP error @ receiving:10038:Socket operation on nonsocket. 
+277294179 13:57:40 7020 Level100 -- DRTPRecvThread[0]退出!
+277294179 13:57:40 7020 Level100 -- DRTPRecvThread[1]退出!
+277294195 13:57:40 7020 Level0 -- KSMBCC-IPC Version 2.99 Copyright 2003-2010 KS ChenYH, On 2011-06-08 14:49:58 - 系统正常退出!
+277294195 13:57:40 7020 Level0 -- KSMBCC-IPC Version 2.99 Copyright 2003-2010 KS ChenYH, On 2011-06-08 14:49:58 - 系统正常退出!

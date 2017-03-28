@@ -1,0 +1,27 @@
+9:59 2011-9-4: TODO: 
+	1. 在FE部分，用到CProperties 的都会（在debug模式下）出现如下跟踪信息：
+		First-chance exception in UDLTest.exe: 0xC0000005: Access Violation.
+		First-chance exception in UDLTest.exe: 0xC0000005: Access Violation.
+		a. CFIXEngine::ToOpenFESession -- m_managedAPI.newAPI(m_properties)
+		b. CFIXEngine::createManagedAPI -- m_managedAPI = CFixEngineFactory::createFixEngine(m_defaultprop)
+	2. fixengine1.jar中，对MsgType的支持（当需要扩展MsgType的时候），有待扩展；
+	
+
+17:37 2011/9/1：
+
+将JAPIListener.java中的接口进行修改：
+    //private native void handleMessageReceived(int ref,CMessageHandle message) throws Exception;
+    private native void handleMsgReceived(int ref,String Msg) throws Exception;
+    ///////////////////////Updated by CYH @ 2011/09/01 //////////////////////////////////
+
+生成，
+并jar cvfi fixengine.jar -C . 导出 新的fixengine.jar, 
+并用 javah com.sungard.cs.fix.fixgateway.api.capi.JApiListener 生成头文件，
+改名为CBApiListener.h
+
+修改fmi.dsp中的相关文件，在CApiListener中
+   /****************** Updated by CYH @ 2011/09/01 *******************
+	virtual void handleMessageReceived(CMessageHandle message) = 0;
+   *******************************************************************/
+   virtual void handleMsgReceived(const char *msgTxt) = 0;
+

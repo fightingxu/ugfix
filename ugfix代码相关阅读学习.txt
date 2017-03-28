@@ -1,0 +1,40 @@
+ksugbu.cpp:主程序
+1: 首先UG_LoadIni加载参数 ， 再UDLInitialize,再UG_Init，
+会启动CUGFMQ::Open的线程接收来自FIX的消息, 最后执行UG_Processing
+
+
+2:使用结构体_T_UGDATA的sPossResend字段来代表是否需要重推.
+
+
+3:FIX指令重推需要在DFD之后,EOD之前进行处理
+
+
+4: UGFIX相关代码主要是ksugbu目录下的工程文件
+
+5: ksugbu.cpp会在while循环里面执行UG_Processing,
+   每隔60秒会发送411756给KSTP后台,来确定是否是EOD以及DFD,
+   
+   
+6:FIx指令重推设计
+  (1)UG_PARTNER表增加俩个表字段,
+     RES_TIME: 与该对手方的FIX指令重推的时间点，若空，则不执行重推
+     RES_ITIME:执行FIX指令重推的服务器时间点,每天更新一次,;若该字段为空,则不进行重推
+     
+     
+  (2)UGFIX网关会每隔60秒进行CHECKEOD发送411756给后台KSTP,
+     411756除了要进行EOD的处理, 还要进行DFD的处理,
+     现在，需要新增加指令重推的确认处理(逻辑参考EOD，利用UG_PARTNER表的RES_TIME以及RES_ITIME字段)
+     可以根据f411768.cpp来进行处理, 然后将执行数据通过411705推送给UGFIX,其中TAG 97 = Y，表示这是重推的数据
+     
+     
+     
+  (3)UGFIX在收到重推的数据之后，不严格校验IEXECID的排序,直接将数据推送给FIX对手方，完成指令重推的整个逻辑
+  
+  
+  (4)返回FIX消息的流程,
+     FIXSession.cpp (OTRun)-> UG_GetOutMsg-> UG_FIXMsg2UGData -> FIXDataSetData -> FIXDataGetUGData -> UpdateSSData
+   
+   
+  (5)lua脚本处理返回消息流程,
+     HandleOutFIXMessage(UGateManage.cpp) ->FormatOutFIXData(UGateManage.cpp,核心代码,利用lua脚本规范返回的fix指令)
+     ->HaveOutMsg(UGChannel.cpp ,   outMsgs[plevel].push_back(mdata)将发送数据落地到集合或容器里面(list)集合)

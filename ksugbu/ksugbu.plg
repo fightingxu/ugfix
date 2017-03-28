@@ -1,0 +1,68 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ksugbu - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\Administrator\AppData\Local\Temp\RSP6F55.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /I "./" /I "../xinc" /I "../buinc" /I "../FE/inc" /I "C:\Program Files\Java\jdk1.7.0\include\\" /I "C:\Program Files\Java\jdk1.7.0\include\win32" /I "C:\Program Files (x86)\Lua\5.1\include" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/ksugbu.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\qfii-svnwc\国际业务部ugfix代码\ksugbu\ksugbu.cpp"
+"E:\qfii-svnwc\国际业务部ugfix代码\ugate\LuaFIX.cpp"
+"E:\qfii-svnwc\国际业务部ugfix代码\ugate\ugate.cpp"
+"E:\qfii-svnwc\国际业务部ugfix代码\ugate\UGateManage.cpp"
+"E:\qfii-svnwc\国际业务部ugfix代码\ugate\UGChannel.cpp"
+]
+Creating command line "cl.exe @C:\Users\Administrator\AppData\Local\Temp\RSP6F55.tmp" 
+Creating temporary file "C:\Users\Administrator\AppData\Local\Temp\RSP6F56.tmp" with contents
+[
+ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/ugate.pdb" /machine:I386 /out:"Release/ugate.exe" /libpath:"..\lib" 
+".\Release\ksugbu.obj"
+".\Release\bdefine.obj"
+".\Release\bupub.obj"
+".\Release\BUSem.obj"
+".\Release\BUShm.obj"
+".\Release\dbf.obj"
+".\Release\fixbase.obj"
+".\Release\FIXData.obj"
+".\Release\logfile.obj"
+".\Release\MemQueue.obj"
+".\Release\MsgQueue.obj"
+".\Release\mutex.obj"
+".\Release\mypub.obj"
+".\Release\profile.obj"
+".\Release\slist.obj"
+".\Release\stdafx.obj"
+".\Release\svrlink.obj"
+".\Release\tcp.obj"
+".\Release\WThread.obj"
+".\Release\LuaFIX.obj"
+".\Release\MsgDataList.obj"
+".\Release\ugate.obj"
+".\Release\UGateManage.obj"
+".\Release\UGChannel.obj"
+".\Release\APIListener.obj"
+".\Release\FIXEngine.obj"
+".\Release\FIXSession.obj"
+"..\lib\XPack.lib"
+"..\FE\fixengineR.lib"
+]
+Creating command line "link.exe @C:\Users\Administrator\AppData\Local\Temp\RSP6F56.tmp"
+<h3>Output Window</h3>
+Compiling...
+ksugbu.cpp
+LuaFIX.cpp
+ugate.cpp
+UGateManage.cpp
+UGChannel.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+ugate.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

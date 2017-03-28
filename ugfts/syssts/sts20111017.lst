@@ -1,0 +1,85 @@
+--- Function Status at 141452 (TickCount=357255362)---
+funcno|class|         gid|success|failure|           time| t_max| t_min|   t_avg|Description       | Programmer   
+    411701|1|     UGFTS|Y|     15|      0|          24633| 19937|     0|    1642|UG (Out) - New Order Single|CYH|11:20:46
+    411702|1|     UGFTS|Y|      5|      0|              0|     0|     0|       0|UG (Out) - Order Cancel Request|CYH|10:10:04
+    411705|2|     UGFTS|Y|      0|      0|              0|     0|     0|    ----|UG (Out) - Execution Report|CYH|08:00:00
+    411730|1|     UGFTS|Y|      0|      0|              0|     0|     0|    ----|更新UDL中的Channel状态|CYH|08:00:00
+    411731|1|     UGFTS|Y|      0|      0|              0|     0|     0|    ----|更新Channel状态, EOD,Open,Close|CYH|08:00:00
+    411732|1|     UGFTS|Y|      0|      0|              0|     0|     0|    ----|关闭UDL上所有的Channel|CYH|08:00:00
+    411799|1|     UGFTS|Y|      0|      0|              0|     0|     0|    ----|UG (Out) - Message Out|CYH|08:00:00
+--- BULinkThread Status at 141452 (time(NULL)=1318832092,TickCount=357255362)---
+00(NOTREADY) QNO21    BUID(UGFTS      ) LT[11:19:35] LF 11 LRT411701  LST87613437   
+01(NOTREADY) QNO1     BUID(UGIN       ) LT[11:19:35] LF  0 LRT0       LST0          
+
+--- DRTPRouter Status at 141452 (time(NULL)=1318832092 TickCount=357255518)---
+Router0 IP:172.28.120.205 Port:3000 NodeID:100 
+	Server FuncNo:5914/5915 connect:Y sct=11:52:34 slt=11:20:46 scc=2 src=12 srl=3919 ssc=12 ssl=1560 
+	PushCLT connect:N cct=11:20:17 clt=11:20:17 ccc=13 crc=197 crl=25780 csc=2319 csl=463406 
+	ExtCallCLT totals:2 links:2 using:0 
+Router1 IP:172.28.120.205 Port:3010 NodeID:100 
+	Server FuncNo:5914/5915 connect:Y sct=11:52:34 slt=10:10:04 scc=2 src=8 srl=2475 ssc=8 ssl=1040 
+	PushCLT connect:N cct=11:20:46 clt=11:20:46 ccc=14 crc=198 crl=33361 csc=2150 csl=428020 
+	ExtCallCLT totals:2 links:2 using:0 
+
+--- ReqPackQueue Status at 141452 (time()=1318832092,TickCount=357255534)---
+BU Groups[0](UGIN) ReqPackQueue1 size=0
+BU Groups[0](UGIN) ReqPackQueue2 size=0
+BU Groups[0](UGIN) ReqPackQueue3 size=0
+BU Groups[1](UGFTS) ReqPackQueue1 size=0
+BU Groups[1](UGFTS) ReqPackQueue2 size=0
+BU Groups[1](UGFTS) ReqPackQueue3 size=0
+
+--- BUGroups Status at 141452 (time()=1318832092,TickCount=357255534)---
+   0       UGIN   4   0   0    0    0    0
+   1      UGFTS   1   0   0    0    0    0
+
+--- Push Status at 141452 (time()=1318832092,TickCount=357255534)---
+PushFile:C:\dd\projects\FIXIII\UGate\ugfts/pdbfs/20111017.dbf - Number of Push Records: 0
+PushThread[0] has processed 0 records in 20111017.dbf
+	DRTPs (Node-100): 0 1
+{
+}
+
+--- Function Status at 154937 (TickCount=362940506)---
+funcno|class|         gid|success|failure|           time| t_max| t_min|   t_avg|Description       | Programmer   
+    411701|1|     UGFTS|Y|      0|      0|              0|     0|     0|    ----|UG (Out) - New Order Single|CYH|08:00:00
+    411702|1|     UGFTS|Y|      0|      0|              0|     0|     0|    ----|UG (Out) - Order Cancel Request|CYH|08:00:00
+    411705|2|     UGFTS|Y|      0|      0|              0|     0|     0|    ----|UG (Out) - Execution Report|CYH|08:00:00
+    411730|1|     UGFTS|Y|      0|      0|              0|     0|     0|    ----|更新UDL中的Channel状态|CYH|08:00:00
+    411731|1|     UGFTS|Y|      0|      0|              0|     0|     0|    ----|更新Channel状态, EOD,Open,Close|CYH|08:00:00
+    411732|1|     UGFTS|Y|      0|      0|              0|     0|     0|    ----|关闭UDL上所有的Channel|CYH|08:00:00
+    411799|1|     UGFTS|Y|      0|      0|              0|     0|     0|    ----|UG (Out) - Message Out|CYH|08:00:00
+--- BULinkThread Status at 154937 (time(NULL)=1318837777,TickCount=362940506)---
+00(NOTREADY) QNO1     BUID(UGFTS      ) LT[14:20:09] LF 10 LRT0       LST0          
+01(NOTREADY) QNO1     BUID(UGIN       ) LT[14:20:09] LF  0 LRT0       LST0          
+
+--- DRTPRouter Status at 154937 (time(NULL)=1318837777 TickCount=362940538)---
+Router0 IP:172.28.120.205 Port:3000 NodeID:100 
+	Server FuncNo:5926/5927 connect:Y sct=14:16:52 slt=08:00:00 scc=1 src=0 srl=0 ssc=0 ssl=0 
+	PushCLT connect:N cct=14:17:07 clt=14:20:09 ccc=1 crc=4 crl=558 csc=8 csl=1758 
+	ExtCallCLT totals:2 links:2 using:0 
+Router1 IP:172.28.120.205 Port:3010 NodeID:100 
+	Server FuncNo:5926/5927 connect:Y sct=14:16:52 slt=15:46:11 scc=1 src=1 srl=344 ssc=2 ssl=334 
+	PushCLT connect:N cct=14:20:09 clt=14:20:09 ccc=1 crc=5 crl=3930 csc=7 csl=2919 
+	ExtCallCLT totals:2 links:2 using:0 
+
+--- ReqPackQueue Status at 154937 (time()=1318837777,TickCount=362940538)---
+BU Groups[0](UGIN) ReqPackQueue1 size=0
+BU Groups[0](UGIN) ReqPackQueue2 size=0
+BU Groups[0](UGIN) ReqPackQueue3 size=0
+BU Groups[1](UGFTS) ReqPackQueue1 size=0
+BU Groups[1](UGFTS) ReqPackQueue2 size=0
+BU Groups[1](UGFTS) ReqPackQueue3 size=0
+
+--- BUGroups Status at 154937 (time()=1318837777,TickCount=362940538)---
+   0       UGIN   4   0   0    0    0    0
+   1      UGFTS   1   0   0    0    0    0
+
+--- Push Status at 154937 (time()=1318837777,TickCount=362940538)---
+PushFile:C:\dd\projects\FIXIII\UGate\ugfts/pdbfs/20111017.dbf - Number of Push Records: 9
+PushThread[0] has processed 9 records in 20111017.dbf
+	DRTPs (Node-100): 0 1
+{
+	Dest[0:5810:0] - SNO:1, unAckRec:0, STime0:14:17:07, STime:14:20:09, ATime:14:20:09, FailTime:--:--:--
+}
+

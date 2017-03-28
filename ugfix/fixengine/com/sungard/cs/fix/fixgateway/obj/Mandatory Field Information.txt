@@ -1,0 +1,55 @@
+MANDATORY FIELDS FOR NEWORDER
+
+	String cIOrdID 
+	char handlInst 
+	String symbol 
+	String side 
+	Date trasactTime 
+	char ordType
+
+
+MANDATORY FIELDS FOR ORDERCANCELREPLACE
+
+	 String origClOrdID 
+	 String clOrdID 
+	 char handlInst
+	 String symbol 
+	 char 	side
+	 Date	transactTime 
+	 char	ordType
+
+MANDATORY FIELDS FOR IOI
+
+	String ioiShares 
+	char side
+	String symbol 
+	char ioiTransType 
+	String ioiID 
+
+
+MANDATORY FIELDS FOR ALLOCATIONACK
+	String allocID 
+	Date tradeDate 
+	int allocStatus
+
+
+
+
+
+	
+	 
+	 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

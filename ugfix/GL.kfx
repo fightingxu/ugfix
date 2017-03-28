@@ -1,0 +1,73 @@
+-- FIXLib中所有的导出函数
+-- Begin:
+--[[
+new 一个CFIXData，以便调用后续函数的使用
+FIXDATAHANDLE(rtn) = FIXDataNew()
+
+delete 调用FIXDataNew获得的CFIXData类的实例
+FIXDataDelete(FIXDATAHANDLE)
+
+重新设置CFixData内容
+rtn = FIXDataReset(FIXDATAHANDLE, sBeginString, sSenderCompID, sTargetCompID)
+
+将fix格式的消息数据设置到FIXData的数据值
+rtn = FIXDataSetData(FIXDATAHANDLE, fixdata, length)
+
+在最后添加一个标签tag和值
+rtn = FIXDataAddTag(FIXDATAHANDLE, tag, tvalue, vlen)
+
+获取本FIXData中的FIXTag的个数
+rtn = FIXDataGetTagCount(FIXDATAHANDLE)
+
+获取指定标签序号tag_no的FIXTag的信息
+rtn, tag, tvalue, vlen = FIXDataGetTagNo(FIXDATAHANDLE, tag_no)
+
+根据标签的tag值获取第一个出现该标签的值
+rtn, tvalue, vlen = FIXDataGetTag(FIXDATAHANDLE, tag)
+
+从tag_no0的后面开始查找tag为tag的那个，并获得相关信息
+rtn, tvalue, vlen = FIXDataGetTagNext(FIXDATAHANDLE, tag_no0, tag)
+
+从从tag_no0的后面开始的Component Group中找指定序号no的tag的值
+rtn, tvalue, vlen = FIXDataGetGroupTagNext(FIXDATAHANDLE, tag_no0, tag, no)
+
+修改指定的标签内容
+rtn = FIXDataUpdateTag(FIXDATAHANDLE, tag_no, tag, tvalue, tvlen)
+
+获取已经设置了的完整的FIXDATA数据串
+length, fixdata = FIXDataGetFIXData(FIXDATAHANDLE)
+
+去掉指定的Tag域
+rtn = FIXDataRemoveTagNo(FIXDATAHANDLE, tag_no)
+
+去掉第一个发现的指定tag域
+rtn = FIXDataRemoveTag(FIXDATAHANDLE, tag)
+
+得到标准格式的FIX消息数据
+length, fixdata = FIXDataGetStdFIXMessage(FIXDATAHANDLE, datasize, sBeginString) sBeginString可以不送
+--]]
+-- End
+
+PARTNERID='GL'
+
+function CheckInFIXMsg(FIXDATAHANDLE)
+	FIXLib.FIXDataUpdateTag(FIXDATAHANDLE,-1,11220,"Test InFIXMsg",-1);
+	return 1;
+end
+
+function CheckOutFIXMsg(FIXDATAHANDLE)
+	local rtn, Value_Tag56, vlen_Tag56 = FIXLib.FIXDataGetTag(FIXDATAHANDLE, 56);
+	if (Value_Tag56 == PARTNERID) then
+		local rtn_Tag35, Value_Tag35, vlen_Tag35 = FIXLib.FIXDataGetTag(FIXDATAHANDLE, 35);
+		local rtnSubID, Value_Tag116, vlenSubID = FIXLib.FIXDataGetTag(FIXDATAHANDLE, 116);
+		if (rtnSubID >=0) then --获取成功
+			FIXLib.FIXDataUpdateTag(FIXDATAHANDLE, -1, 115, Value_Tag116, -1);
+		else
+			FIXLib.FIXDataDebugString("\n\nFailed to get tag116's value \n\n");
+		end
+	end	
+	return 1;
+end
+
+
+

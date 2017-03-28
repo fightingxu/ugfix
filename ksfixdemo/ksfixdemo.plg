@@ -1,0 +1,68 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ksfixdemo - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\YONGHU~1.CHE\AppData\Local\Temp\RSPDBF3.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /I "../buinc" /I "../ksfix" /I "../xinc" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/ksfixdemo.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\dd\projects\FIXIII\UGate\ksfix\FIXAppData.cpp"
+"C:\dd\projects\FIXIII\UGate\bupub\fixbase.cpp"
+"C:\dd\projects\FIXIII\UGate\bupub\FIXData.cpp"
+"C:\dd\projects\FIXIII\UGate\ksfix\FIXLinkThread.cpp"
+"C:\dd\projects\FIXIII\UGate\ksfix\FIXSession.cpp"
+"C:\dd\projects\FIXIII\UGate\ksfix\ksfix.cpp"
+"C:\dd\projects\FIXIII\UGate\ksfixdemo\ksfixdemo.cpp"
+"C:\dd\projects\FIXIII\UGate\bupub\logfile.cpp"
+"C:\dd\projects\FIXIII\UGate\ugate\MsgDataList.cpp"
+"C:\dd\projects\FIXIII\UGate\bupub\mutex.cpp"
+"C:\dd\projects\FIXIII\UGate\bupub\mypub.cpp"
+"C:\dd\projects\FIXIII\UGate\bupub\tcp.cpp"
+"C:\dd\projects\FIXIII\UGate\bupub\WThread.cpp"
+]
+Creating command line "cl.exe @C:\Users\YONGHU~1.CHE\AppData\Local\Temp\RSPDBF3.tmp" 
+Creating temporary file "C:\Users\YONGHU~1.CHE\AppData\Local\Temp\RSPDC04.tmp" with contents
+[
+ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/ksfixdemo.pdb" /debug /machine:I386 /out:"Debug/ksfixdemo.exe" /pdbtype:sept 
+.\Debug\FIXAppData.obj
+.\Debug\fixbase.obj
+.\Debug\FIXData.obj
+.\Debug\FIXLinkThread.obj
+.\Debug\FIXSession.obj
+.\Debug\ksfix.obj
+.\Debug\ksfixdemo.obj
+.\Debug\logfile.obj
+.\Debug\MsgDataList.obj
+.\Debug\mutex.obj
+.\Debug\mypub.obj
+.\Debug\tcp.obj
+.\Debug\WThread.obj
+]
+Creating command line "link.exe @C:\Users\YONGHU~1.CHE\AppData\Local\Temp\RSPDC04.tmp"
+<h3>Output Window</h3>
+Compiling...
+FIXAppData.cpp
+fixbase.cpp
+FIXData.cpp
+FIXLinkThread.cpp
+FIXSession.cpp
+ksfix.cpp
+ksfixdemo.cpp
+logfile.cpp
+MsgDataList.cpp
+mutex.cpp
+mypub.cpp
+tcp.cpp
+WThread.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+ksfixdemo.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

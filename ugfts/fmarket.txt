@@ -1,0 +1,9 @@
+//FIXEXCHANGE|FTSEXCHANGE  -- 第一行是为了描述下面配置数据的含义而加的，程序将不会读取，请别改动!!!!!
+sfe|A
+dce|B
+czce|C
+cffex|G
+XSGE|A
+XDCE|B
+XZCE|C
+CCFX|G

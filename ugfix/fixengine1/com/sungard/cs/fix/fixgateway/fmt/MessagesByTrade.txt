@@ -1,0 +1,136 @@
+// FIX4.2 messages
+ "6"	, //	Indication of Interest
+ "7"	, //	Advertisement
+ "8"	, //	Execution Report
+ "9"	, //	Order Cancel Reject
+ "B"	, //	News
+ "C"	, //	Email
+ "D"	, //	Order Single
+ "E"	, //	Order List
+ "F"	, //	Order Cancel Request
+ "G", //	Order Cancel/Replace Request
+ "H", //	Order Status Request
+ "J"	, //	Allocation
+ "K"	, //	List Cancel Request
+ "L"	, //	List Execute
+ "M" , // List Status Request
+ "N"	, //	List Status
+ "P" , // Allocation ACK
+ "Q" , // Don’t Know Trade (DK)
+ "R" , // Quote Request
+ "S" , // Quote
+ "T" , // Settlement Instructions
+ "V" , // Market Data Request
+ "W" , // Market Data-Snapshot/Full Refresh
+ "X" , // Market Data-Incremental Refresh
+ "Y" , // Market Data Request Reject
+ "Z" , // Quote Cancel
+ "a" , //  Quote Status Request
+ "b" , //  Mass Quote Acknowledgement
+ "c" , // Security Definition Request
+ "d" , // Security Definition
+ "e" , // Security Status Request
+ "f" , // Security Status
+ "g" , // Trading Session Status Request
+ "h" , // Trading Session Status
+ "i" , // Mass Quote
+ "j" , // Business Message Reject
+ "k" , // Bid Request
+ "l" , // Bid Response (lowercase L)
+ "m" , // List Strike Price
+
+
+// Session Level Messages 
+ "0",	//	Heartbeat
+ "1"	, //	Test Request
+ "2"	, //	Resend Request
+ "3"	, //	Reject
+ "4"	, //	Sequence Reset
+ "5"	, //	Logout
+ "A"	, //	Logon
+
+
+
+// { PRE-TRADE messages
+/* 1. INDICATION */
+"7", // Advertisement
+"6", // Indication of Interest
+/* 2. EVENT COMMUNICATIONS */
+"B", // News
+"C",// Email
+/* 3. QUOTATION */
+"R",// QuoteRequest
+"S", // Quote
+"Z", // QuoteCancel
+"a", // QuoteStatusRequest
+"i", // MassQuote
+"b", // Quote Acknowledement
+/* 4. MARKET DATA */
+"V", // MarketDataRequest
+"X" , // MarketDataIncremental Refresh
+"Y" , // MarketData Request Reject
+/* 5. SECURITY AND TRADING SESSION DEFINITION/STATUS*/
+"c", // Security Definition Request */
+"d", // Security Definition
+"v", // Security Type Request
+"w", // Security Types
+"x", // Security List Request
+"y", // SecurityList
+"z",// Derivative Security List Request
+"AA", // Derivative Security List
+"e", // Derivative Security List
+"f", // Derivative Security List
+"g", // Derivative Security List
+"h", // Trading Session Status
+// TRADE messages
+//.1 Single Order Messages
+
+"D", // NewOrder single
+"8", // Execution Report
+"Q", // DKTrade
+"G", // Order Cancel/Replace Request
+"F", // Order Cancel Request
+"9", // Order Cancel Reject
+"H", // Order Status Request
+"q", // OrderMassCancelRequest
+"r", // OrderMassCancelReport
+"h", // Trading Session Status
+"AF", // Order Mass Status Request
+
+// 2. Cross Order Messages
+
+"s", // NewOrderCross
+"t", // CrossOrderCancelReplaceRequest
+"u", // Cross OrderCancelRequest
+
+// 3. Multileg Order Messages
+
+"AB", // NewOrder Multileg
+"AC", // Multileg Order Cancel/Replace Request
+
+// 4. List/Basket Trading
+"k", // BidRequest
+"l" , // BidResponse
+"E" , // NewOrder List
+"m" , // ListStrikePrice
+"N" , // ListStatus
+"L" , // ListExecute
+"K" , // List Cancel Request
+"M" , // List Status Request
+"E" , // NewOrder List
+
+// POST TRADE messages
+// 1. Allocation
+"J", // Allocation
+"P", // Allocation
+"J", // Allocation
+"J", // Allocation
+"J", // Allocation
+// 2. Settlement Instructions
+"T", // Settlement Instructions
+"AD", // TradeCapture Report Request
+"AE", // TradeCapture Report
+
+"o", // Registratin Instructions
+"p", // Registratin Instructions Response
+"", // Registratin Instructions

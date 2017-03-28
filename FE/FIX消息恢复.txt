@@ -1,0 +1,16 @@
+IN:
+	Partner作为BuySide的:
+		NewOrderSingle 、OrderCancelRequest  -> 在内部数据IN和OUT数据检查后，将没有获得Exec消息的NewOrderSingle，向FS以恢复的方式，提交即可；
+				FS在处理NewOrderSingle恢复模式的情况下，若已经有该订单消息，则不用返回 以订单状态返回消息；
+	Partner作为SellSide的:
+		ExecRept -> 过滤 ExecID!='0'的，向FS提交以恢复的方式，提交即可；
+				FS在处理ExecRept以恢复模式的情况下，若在UG_SSEXEC已经存在，则不需要进一步处理；否则，作为新的ExecRept处理下去；
+				
+OUT: 
+	Partner作为BuySide的:
+		ExecRept -> 先用内部的OUT数据中的ExecRept重构 SS_OData，调用UG_GetBSExecMsgs来获得（UG_EXEC中的该Partner的消息）与SS_OData
+			比较，将新的ExecRept和CanceReject(这里也有ExecID)用HaveOutMsg加入到输出消息队列中；
+	Partner作为SellSide的:
+		NewOrderSingle 、OrderCancelRequest -> 用UG_GetSSPendingOrders()获取在UG_SSORDERS中SSORDERID为空的记录，并且和内部IN数据中的ExecRpt中的ClOrdID(OrigClOrdID)
+			比较，若没有，则用HaveOutMsg加入到输出消息队列中；
+		
